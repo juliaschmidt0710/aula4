@@ -51,6 +51,9 @@ namespace App.Persistence.Migrations
                     b.Property<Guid?>("CidadeId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Cpf")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("timestamp without time zone");
 
@@ -59,6 +62,12 @@ namespace App.Persistence.Migrations
 
                     b.Property<int>("Peso")
                         .HasColumnType("integer");
+
+                    b.Property<int>("Rg")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

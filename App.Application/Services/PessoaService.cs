@@ -1,4 +1,5 @@
-﻿using App.Domain.Entities;
+﻿using App.Common;
+using App.Domain.Entities;
 using App.Domain.Interfaces.Application;
 using App.Domain.Interfaces.Repositories;
 using System;
@@ -42,7 +43,10 @@ namespace App.Application.Services
                     Nome = p.Cidade.Nome
                 },
                 Ativo = p.Ativo,
-                DataNascimento = p.DataNascimento
+                DataNascimento = p.DataNascimento,
+                Telefone = p.Telefone,
+                Cpf = p.Cpf,
+                Rg = p.Rg
             }).OrderByDescending(x => x.Nome).ToList();
         }
         public void Remover(Guid id)
@@ -56,8 +60,25 @@ namespace App.Application.Services
             {
                 throw new Exception("Informe o nome");
             }
+            if (!obj.Cpf.CpfCnpjValido())
+            {
+                throw new Exception("Cpf inválido");
+            }
+            if (obj.Id == Guid.Empty) // se for alteração
+            {
+                var existe = _repository.Query(x => x.Cpf == obj.Cpf).Any();
+                if (existe)
+                {
+                    throw new Exception("CPF ja existente no banco de dados");
+                }
+            }
+            
+
             _repository.Save(obj);
             _repository.SaveChanges();
         }
+        
     }
-}
+ }
+
+

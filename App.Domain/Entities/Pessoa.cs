@@ -14,5 +14,8 @@ namespace App.Domain.Entities
         public bool Ativo { get; set; }
         public Guid? CidadeId { get; set; }
         public Cidade Cidade { get; set; }
+        public string Telefone { get; set; }
+        public string Cpf { get; set;}
+        public int Rg { get; set; }
     }
 }

@@ -6,7 +6,7 @@
             <div class="col-md-3 col-sm-12">
                 <div class="form-group mb-12">
                     <label>Cep</label>
-                    <input type="text" name="cep" class="form-control">
+                    <input type="text" name="cep" class="form-control" onkeypress="$(this).mask('00000-000')";>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
@@ -31,4 +31,5 @@
 
 @section Scripts {
     <script src="~/js/pages/cidades-formulario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 }
